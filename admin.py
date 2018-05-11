@@ -390,7 +390,7 @@ def getTable():
         if c is not None and c!="":
             c=json.loads(c)
             for i in ["likeKey", "searchKey", "hidden", "action", "limit", "addIgnore", "encrypt"]:
-                if (len(c[i]) > 0):
+                if (i in c  and len(c[i]) > 0):
                     c[i] = ",".join(c[i])
                 else:
                     c[i] = ""
@@ -419,7 +419,7 @@ def updateTable():
     params = request.form.to_dict()
     # 构造查询条件
     for i in ["likeKey","searchKey","hidden","action","limit","addIgnore","encrypt"]:
-        if(len(params[i])>0):
+        if(i in params and len(params[i])>0):
             params[i]=list(params[i].split(","))
         else:
             params[i]=[]
