@@ -1,0 +1,108 @@
+<meta title="编辑管理组" width="800px" args="role_group"/>
+<form class="form-horizontal"
+      id="role_groupForm"
+      method="put"
+      s="form,valid,nda,datac" s-data="role_group" action="/api/admin/role_group/{role_group.id}" s-valid="{notice: validNotice}"
+      style="padding-top: 30px;">
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">名称：</label>
+        <div class="col-sm-10">
+            <input type="text" name="name" class="form-control"
+                   s-valid-label="名称"
+                   s-valid-error="require(),len(1,12)">
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">权限：</label>
+        <div class="col-sm-10">
+            <input type="hidden" id="roles" name="roles" s-change="valueCharge()"/>
+            <div class="s-ui-grid-action">
+                <input type="button" class="btn btn-danger" value="超级权限" s-click="allData()">
+                <input type="button" class="btn btn-info" value="取消超级权限" s-click="deAllData()">
+            </div>
+            <table s="check" id="provinceGrid" class="table table-striped table-hover" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" s-check-role="checkall-h"></th>
+                    <th style="width: 30%;">权限</th>
+                </tr>
+                </thead>
+                <tbody s="loop" s-data="Smart.dataTransfer(S.get('/api/admin/role?pageSize=1000'), function(rs){return rs.list})" id="provinceLoop">
+                <tr s-loop-role="row" s="datac,row" s-check-role="i">
+                    <td><input type="checkbox" s-check-role="h" s-click="selectData()"></td>
+                    <td s="" s-data-filter="'name'"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+
+    S.on("s-ready", function(){
+        S.N("#roles").change();
+    });
+
+    S.meta.btns = [
+        {
+            name: "保存",
+            style: "btn btn-primary",
+            click: function () {
+                 if (S.N("#roles").val() != "*"){
+                     selectData()
+                 }
+                return S.S("#role_groupForm").submit().done(function (rs) {
+                    S.close(rs);
+                    S.notice(rs.msg, "success");
+                });
+            }
+        },
+        {
+            name: "关闭",
+            style: "btn btn-default",
+            click: function () {
+                S.close();
+            }
+        }
+    ];
+
+    function validNotice(node, msg, level) {
+        if (level == 'error') {
+            S.notice(msg, 'danger');
+        }
+    }
+
+    function allData(){
+        S.S("#provinceGrid").checkAll();
+        S.N("#roles").val("*");
+    }
+    function deAllData(){
+        S.S("#provinceGrid").uncheckAll();
+        S.N("#roles").val("");
+    }
+    function selectData(){
+        var datas = S.S("#provinceGrid").getCheckedData("id");
+        S.N("#roles").val(datas.join(","));
+    }
+    function valueCharge(){
+        var checked= S.N("#roles").val();
+        var datas = S.S("#provinceGrid");
+        console.debug();
+        if(checked =="*"){
+            datas.checkAll(S.N("#roles"));
+        }else {
+            var checkArray=checked.split(",").map(returnInt);
+            var that = datas;
+            $("*[s-check-role='i']:not([s-check-role-disabled])", datas.node).each(function () {
+                var data=Smart.of($(this));
+                if ($.inArray(data.data()["id"],checkArray)>=0) {
+                    console.info(data.data()["id"]);
+                    that._checkNode($(this));
+                }
+            });
+        }
+    }
+    function returnInt(element){
+        return parseInt(element,10);
+    }
+</script>

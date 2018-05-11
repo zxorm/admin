@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script type="text/javascript" src="js/3rd/jquery-1.12.2.min.js"></script>
+    <title>初始化</title>
+
+
+    <script type="text/javascript">
+        function init() {
+            $.ajax({
+                method:"post",
+                url: '/api/admin/init',
+                data:{"group": $("#group").val(), "password": $("#password").val()},
+                success: function (rs) {
+                    rs = JSON.parse(rs);
+                    if (rs.code == 200) {
+                        location.reload();
+                    } else {
+                        alert(rs.msg);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    rs = JSON.parse(jqXHR.responseText);
+                    alert(rs.msg);
+                }
+            });
+
+        }
+    </script>
+</head>
+<body>
+<div class="m">
+    <form style="padding: 20px;">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-key">超级管理员密码</i></div>
+                <input type="text" id="password" class="form-control" placeholder="请输入超级管理员密码"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user">管理员分组</i></div>
+                <input type="text" id="group" class="form-control" value="超级管理员"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="button" onclick="init()" class="btn btn-block btn-primary" value="初始化"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<meta title="登录页面" />
+<div class="login-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <h3>登录</h3>
+                <small></small>
+            </div>
+            <div class="panel panel-orange">
+                <div class="panel-body">
+                    <form style="padding: 20px;" s="form" s-form="{action: login}">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" id="account" class="form-control" placeholder="请输入用户名" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                <input type="password" id="password" class="form-control" placeholder="请输入密码" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-primary" value="登 录" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            管理后台 - &copy; livehl@126.com
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("body").addClass("login-page");
+    function login(){
+        S.get("/api/admin/login",{"name":S.N("#account").val(),"password":S.N("#password").val()}).done(function (rs) {
+            console.debug(rs);
+            if(rs.code==200){
+                location.reload();
+            }else{
+                S.toast(rs.msg, 'danger');
+            }
+        });
+
+    }
+</script>

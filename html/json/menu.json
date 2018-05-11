@@ -1,0 +1,174 @@
+[  {
+  "id": "console",
+  "title": "控制台",
+  "url": "admin/dashboard.html",
+  "icon": "fa fa-dashboard",
+  "open": "true",
+  "label": {
+    "text": "NEW",
+    "style": "label-danger"
+  }
+},
+  {
+  "id": "systemCenter",
+  "title": "系统",
+  "icon": "fa fa-cog",
+  "children": [
+    {
+      "id": "system",
+      "title": "系统设置",
+      "icon": "fa fa-cog",
+      "url": "admin/setting.html"
+    },
+    {
+      "id": "systemNotifications",
+      "title": "系统通知",
+      "icon": "fa fa-cog",
+      "url": "admin/systemNotifications.html"
+    },
+    {
+      "id": "appDownloadInfos",
+      "title": "应用下载信息",
+      "icon": "fa fa-cog",
+      "url": "admin/appDownloadInfos.html"
+    }
+  ]
+},
+  {
+    "id": "roleCenter",
+    "title": "权限中心",
+    "children": [
+      {
+        "id": "adminUser",
+        "title": "管理员",
+        "url": "admin/admins.html"
+      },
+      {
+        "id": "adminGroup",
+        "title": "部门",
+        "url": "admin/group.html"
+      },
+      {
+        "id": "adminRole",
+        "title": "权限",
+        "url": "admin/roles.html"
+      },
+      {
+        "id": "adminLog",
+        "title": "操作日志",
+        "url": "admin/adminlog.html"
+      }
+    ]
+  },
+  {
+    "id": "userCenter",
+    "title": "用户中心",
+    "children": [
+      {
+        "id": "users",
+        "title": "用户",
+        "url": "admin/users.html"
+      },
+       {
+        "id": "feedbacks",
+        "title": "反馈",
+        "url": "admin/feedbacks.html"
+      },
+       {
+        "id": "userActionLogs",
+        "title": "用户日志",
+        "url": "admin/userActionLogs.html"
+      },{
+        "id": "areas",
+        "title": "园区",
+        "url": "admin/areas.html"
+      },
+       {
+        "id": "childrens",
+        "title": "儿童",
+        "url": "admin/childrens.html"
+      },
+       {
+        "id": "courses",
+        "title": "课程",
+        "url": "admin/courses.html"
+      },
+       {
+        "id": "userChildrens",
+        "title": "用户孩子",
+        "url": "admin/userChildrens.html"
+      },{
+        "id": "dingdinggourp",
+        "title": "钉钉部门",
+        "url": "admin/ding_ding_groups.html"
+      },{
+        "id": "dingdingusers",
+        "title": "钉钉用户",
+        "url": "admin/ding_ding_users.html"
+      },{
+        "id": "meetingContents",
+        "title": "会议内容",
+        "url": "admin/meetingContents.html"
+      },{
+        "id": "meetings",
+        "title": "会议",
+        "url": "admin/meetings.html"
+      },{
+        "id": "meetingUsers",
+        "title": "会议用户",
+        "url": "admin/meetingUsers.html"
+      },{
+        "id": "appDownloads",
+        "title": "应用下载",
+        "url": "admin/appDownloads.html"
+      },{
+        "id": "meetingTypes",
+        "title": "会议类型",
+        "url": "admin/meetingTypes.html"
+      },{
+        "id": "attas",
+        "title": "附件",
+        "url": "admin/attas.html"
+      },{
+        "id": "areaCourses",
+        "title": "园区自定义课程",
+        "url": "admin/areaCourses.html"
+      },{
+        "id": "satAttas",
+        "title": "sat附件",
+        "url": "admin/satAttas.html"
+      }
+      
+    ]
+  },{
+    "id": "liveCenter",
+    "title": "直播中心",
+    "children": [
+      {
+        "id": "liveRoomsusers",
+        "title": "直播",
+        "url": "admin/liveRooms.html"
+      },
+       {
+        "id": "liveRoomLogs",
+        "title": "直播日志",
+        "url": "admin/liveRoomLogs.html"
+      }
+    ]
+  },{
+  "id": "statCenter",
+  "title": "统计中心",
+  "children": [
+    {
+      "id": "statKeys",
+      "title": "定时统计任务",
+      "url": "admin/statKeys.html"
+    },
+    {
+      "id": "statValues",
+      "title": "定时统计结果",
+      "url": "admin/statValues.html"
+    }
+  ]
+}
+]

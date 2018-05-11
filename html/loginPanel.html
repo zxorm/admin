@@ -1,0 +1,33 @@
+<meta title="登录窗口" width="500px"/>
+<div class="m">
+    <form style="padding: 20px;">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <input type="text"  id="account"  class="form-control" placeholder="请输入用户名" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                <input type="password" id="password"  class="form-control" placeholder="请输入密码" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="button" s-click="login()" class="btn btn-block btn-primary" value="登 录" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function login(){
+        S.get("/api/admin/login",{"name":S.N("#account").val(),"password":S.N("#password").val()}).done(function (rs) {
+            console.debug(rs);
+            if(rs.code==200){
+                location.reload();
+            }else{
+                S.toast(rs.msg, 'danger');
+            }
+        });
+
+    }
+</script>

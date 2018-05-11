@@ -1,0 +1,82 @@
+@import "var.less";
+@import "mixins.less";
+
+.no-padding{  padding: 0;}
+.no-margin{  margin: 0;}
+
+.no-margin-t{ margin-top: 0}
+.no-margin-b{ margin-bottom: 0}
+.no-margin-l{ margin-left: 0}
+.no-margin-r{ margin-right: 0}
+
+.no-box-shadow {box-shadow: none;}
+
+.no-list-style{
+  list-style: none;
+}
+
+.bg-primary{  background: @brand-primary !important;}
+.bg-default{  background: @bg-default-color !important;}
+.bg-danger{  background: @bg-danger-color !important;}
+.bg-info{  background: @bg-info-color !important;}
+.bg-success{  background: @bg-success-color !important;}
+.bg-warning{  background: @bg-waring-color !important;}
+.bg-orange{  background: @bg-orange-color !important;}
+.bg-violet{  background: @bg-violet-color !important;}
+.bg-blue{  background: @bg-blue-color !important;}
+.bg-light{ background: @bg-light-color !important;}
+.bg-white{ background: #fff !important;}
+
+//border
+.border-style(@border-color){
+  border-color: @border-color !important;
+  > th, >td{
+    border-color: @border-color !important;
+  }
+}
+.border-primary{ .border-style(@border-primary-color)}
+.border-default{ .border-style(@border-default-color)}
+.border-info{ .border-style(@border-info-color)}
+.border-success{ .border-style(@border-success-color)}
+.border-danger{ .border-style(@border-danger-color)}
+.border-warning{ .border-style(@border-warning-color)}
+.border-violet{ .border-style(@border-violet-color)}
+.border-blue{ .border-style(@border-blue-color)}
+.border-orange{ .border-style(@border-orange-color)}
+
+.border-right{ border-right: 1px solid @border-default-color; }
+.border-left{ border-left: 1px solid @border-default-color; }
+.border-top{ border-top: 1px solid @border-default-color; }
+.border-bottom {
+  border-bottom: 1px solid @border-default-color;
+}
+.border{
+  border: 1px solid @border-default-color;
+}
+
+.border-none{
+  border: none;
+}
+.border-t-none{
+  border-top: none;
+}
+.border-l-none{
+  border-left: none;
+}
+.border-r-none{
+  border-right: none;
+}
+.border-b-none{
+  border-bottom: none;
+}
+
+.buttons-wrapper{
+  .btn{
+    margin-bottom: 5px;
+  }
+}
+
+//无过度效果
+.transition-none{
+  transition: none !important;
+}

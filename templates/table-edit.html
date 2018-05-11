@@ -1,0 +1,49 @@
+<meta title="编辑{{name}}" width="800px" args="{{table}}"/>
+<form class="form-horizontal"
+      id="{{table}}Form"
+      method="put"
+      s="form,valid,nda,datac" s-data="{{table}}" action="/api/admin/{{table}}/{ {{table}}.id}" s-valid="{notice: validNotice}"
+      style="padding-top: 30px;">
+
+    {% for k,v in tableCols.items() %}
+        <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">{{v["column_comment"]}}：</label>
+            <div class="col-sm-10">
+                <input type="text" name="{{k}}" class="form-control"
+                       s-valid-label="{{v["column_comment"]}}"
+                       {% if v["is_nullable"]=="NO" %}
+                       s-valid-error="require(),len(1,{{ v["length"]}})"
+                       {% endif %}
+                >
+            </div>
+        </div>
+    {% endfor %}
+
+</form>
+<script type="text/javascript">
+    S.meta.btns = [
+        {
+            name: "保存",
+            style: "btn btn-primary",
+            click: function () {
+                return S.S("#{{table}}Form").submit().done(function (rs) {
+                    S.close(rs);
+                    S.notice(rs.msg, "success");
+                });
+            }
+        },
+        {
+            name: "关闭",
+            style: "btn btn-default",
+            click: function () {
+                S.close();
+            }
+        }
+    ];
+
+    function validNotice(node, msg, level) {
+        if (level == 'error') {
+            S.notice(msg, 'danger');
+        }
+    }
+</script>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link href="css/pe-icon-7-stroke/css/pe-icon-7-stroke.css" type="text/css" rel="stylesheet" />
+    <link href="css/pe-icon-7-stroke/css/helper.css" type="text/css" rel="stylesheet" />
+    <link href="css/animate.css" type="text/css" rel="stylesheet" />
+    <link href="css/spinkit.css" type="text/css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="less/layout.css" type="text/css" rel="stylesheet" />
+    <link href="less/keyframes.css" type="text/css" rel="stylesheet" />
+    <link href="less/animate.css" type="text/css" rel="stylesheet" />
+    <link href="less/loading.css" type="text/css" rel="stylesheet" />
+    <link href="less/buttons.css" type="text/css" rel="stylesheet" />
+    <link href="less/labels.css" type="text/css" rel="stylesheet" />
+    <link href="less/panels.css" type="text/css" rel="stylesheet" />
+    <link href="less/modals.css" type="text/css" rel="stylesheet" />
+    <link href="less/table.css" type="text/css" rel="stylesheet" />
+    <link href="less/progresses.css" type="text/css" rel="stylesheet" />
+    <link href="less/normalize.css" type="text/css" rel="stylesheet" />
+    <link href="less/type.css" type="text/css" rel="stylesheet" />
+    <link href="less/component-animations.css" type="text/css" rel="stylesheet" />
+    <link href="less/utilities.css" type="text/css" rel="stylesheet" />
+    <link href="less/forms.css" type="text/css" rel="stylesheet" />
+    <link href="less/well.css" type="text/css" rel="stylesheet" />
+    <link href="less/ui.contextmenu.css" type="text/css" rel="stylesheet" />
+    <link href="less/ui.toast.css" type="text/css" rel="stylesheet" />
+    <link href="less/ui.alert.css" type="text/css" rel="stylesheet" />
+    <link href="less/ui.confirm.css" type="text/css" rel="stylesheet" />
+    <link href="less/ui.form.validation.css" type="text/css" rel="stylesheet" />
+    <link href="less/view.timeline.css" type="text/css" rel="stylesheet" />
+    <link href="less/view.forum.css" type="text/css" rel="stylesheet" />
+    <link href="less/widget.tpl.css" type="text/css" rel="stylesheet" />
+    <link href="less/datetimepicker.css" type="text/css" rel="stylesheet" />
+    <link href="less/login.css" type="text/css" rel="stylesheet" />
+    <link href="css/chosen.css" type="text/css" rel="stylesheet"/>
+    <link href="css/zoomify.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/3rd/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="js/3rd/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="js/3rd/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-plugins/inputmask.js"></script>
+    <script type="text/javascript" src="js/bootstrap-plugins/cookie.js"></script>
+    <script type="text/javascript" src="js/bootstrap-plugins/input-select.js"></script>
+    <script type="text/javascript" src="js/bootstrap-plugins/input-highlight.js"></script>
+    <script type="text/javascript" src="js/3rd/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/3rd/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="js/3rd/jquery-dateFormat.min.js"></script>
+    <script type="text/javascript" src="js/3rd/echarts.min.js"></script>
+    <script type="text/javascript" src="js/3rd/jquery.peity.min.js"></script>
+    <script type="text/javascript" src="js/3rd/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/3rd/flot/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="js/3rd/flot/jquery.flot.spline.js"></script>
+    <script type="text/javascript" src="js/3rd/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/3rd/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="js/3rd/ueditor/ueditor.all.js"> </script>
+    <script type="text/javascript" src="js/3rd/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="js/3rd/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/src/smart.core.js"></script>
+    <script type="text/javascript" src="js/src/smart.ui.js"></script>
+    <script type="text/javascript" src="js/src/smart.template.js"></script>
+    <script type="text/javascript" src="js/src/widgets/window.js"></script>
+    <script type="text/javascript" src="js/src/widgets/tpl.js"></script>
+    <script type="text/javascript" src="js/src/widgets/datac.js"></script>
+    <script type="text/javascript" src="js/src/widgets/databind.js"></script>
+    <script type="text/javascript" src="js/src/widgets/nameDataAdapter.js"></script>
+    <script type="text/javascript" src="js/src/widgets/loop.js"></script>
+    <script type="text/javascript" src="js/src/widgets/check.js"></script>
+    <script type="text/javascript" src="js/src/widgets/event.js"></script>
+    <script type="text/javascript" src="js/src/plugins/alert.js"></script>
+    <script type="text/javascript" src="js/src/plugins/confirm.js"></script>
+    <script type="text/javascript" src="js/src/plugins/popup.open.js"></script>
+    <script type="text/javascript" src="js/src/plugins/upload.js"></script>
+    <script type="text/javascript" src="js/src/plugins/toast.js"></script>
+    <script type="text/javascript" src="js/src/plugins/cascade.js"></script>
+    <script type="text/javascript" src="js/src/plugins/timeout.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/contextmenu.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/pagination.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/pager.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/form.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/select.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/valid.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/tooltip.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/popover.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/datetimepicker.js"></script>
+    <script type="text/javascript" src="js/src/widgets-ui/affix.js"></script>
+    <script type="text/javascript" src="js/3rd/chosen.jquery.js"></script>
+    <script type="text/javascript" src="js/3rd/jquery.shorten.js"></script>
+    <script type="text/javascript" src="js/3rd/zoomify.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var layoutArgs = {config: {
+                /**
+                 * 菜单的url
+                 * */
+                menuUrl: "json/menu.json",
+                asideTopUrl: "html/asideTop.html",
+                headerUrl: "html/header.html",
+                tabWindowAnimation: "animated fadeInUp-sm"
+            }};
+            Smart.UI.booting($("#root"), {
+                /**
+                 * 用于定义交互的模板，如弹出框，通知，警告框，确认框等等
+                 * */
+                uiTemplateUrl: "ui-template.html"
+            }).done(function($root){
+                if(window.location.href.indexOf("?login") == -1 && window.logined !== true){
+                    $root.load("layout.html", layoutArgs);
+                } else {
+                    $root.load("login.html");
+                    $root.node.on("login:success", function (e, status) {
+                        if (status) {
+                            window.logined = status;
+                            $root.load("layout.html", layoutArgs);
+                        }
+                    });
+                }
+            })
+        });
+
+
+                Array.prototype.contains = function(obj) {
+            var i = this.length;
+            while (i--) {
+                if (this[i] === obj) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        Array.prototype.remove = function(b) {
+            var a = this.indexOf(b);
+            if (a >= 0) {
+                this.splice(a, 1);
+                return true;
+            }
+            return false;
+        };
+        function getSelectValue(desc,src){
+            var data=src.val();
+            console.debug(data);
+            if(data){
+                desc.val(data.join(","));
+            }else{
+                desc.val('');
+            }
+        }
+        function appendSelectValue(src,desc){
+            var data=src.val();
+            if(data){
+                var arry=desc.val().split(",");
+                for (var i=0;i<data.length;i++)
+                {
+                    if(!arry.contains(data[i])){
+                        arry.push(data[i]);
+                    }
+                }
+                for (var i=0;i<arry.length;i++)
+                {
+                    if(!data.contains(arry[i])){
+                        delete arry[i];
+                    }
+                }
+                var newArry=[];
+                for (var i=0;i<arry.length;i++)
+                {
+                    if(arry[i]) {
+                        newArry.push(arry[i]);
+                    }
+                }
+                desc.val(newArry.join(","));
+            }else{
+                desc.val('');
+            }
+        }
+        function setSelectValue(src,desc){
+            var src_data= src.val().split(",");
+            console.debug(src_data);
+            desc.each(function (i,e){
+                var je=$(e);
+                if($.inArray(je.attr("value"),src_data)>=0){
+                    je.attr("selected",true);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="root" s="window"></div>
+</body>
+</html>

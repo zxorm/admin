@@ -1,0 +1,206 @@
+<meta title="编辑表设置" width="800px" args="tableData"/>
+<form class="form-horizontal"
+      id="tableForm"
+      method="put"
+      s="form,valid,nda,datac" s-data="tableData" action="/api/admin/table" s-valid="{notice: validNotice}"
+      style="padding-top: 30px;">
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">表：</label>
+        <div class="col-sm-10">
+            <input type="text" name="id" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">名称：</label>
+        <div class="col-sm-10">
+            <input type="text" name="name" class="form-control" s-valid-error="require()">
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">模糊搜索字段：</label>
+        <div class="col-sm-10">
+            <select s="select" id="likeKeySelect" name="likeKey" class="selectpicker" title="选择字段"
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">精确搜索字段：</label>
+        <div class="col-sm-10">
+            <input id="hidden_searchKey" type="hidden" name="searchKey">
+            <select s="select" id="searchKeySelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">隐藏字段：</label>
+        <div class="col-sm-10">
+            <input id="hidden_hidden" type="hidden" name="hidden">
+            <select s="select" id="hiddenSelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">操作类型：</label>
+        <div class="col-sm-10">
+            <input id="hidden_action" type="hidden" name="action">
+            <select s="select" id="actionSelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="['add','delete','update']"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">限制显示长度字段：</label>
+        <div class="col-sm-10">
+            <input id="hidden_limit" type="hidden" name="limit">
+            <select s="select" id="limitSelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">分页条数：</label>
+        <div class="col-sm-10">
+            <input type="text" name="pageSize" class="form-control" s-valid-error="require(),range(10,1000000)">
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">上级菜单：</label>
+        <div class="col-sm-10">
+            <input type="text" name="partten" class="form-control" s-valid-error="require()">
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">添加修改需要忽略的字段：</label>
+        <div class="col-sm-10">
+            <input id="hidden_addIgnore" type="hidden" name="addIgnore">
+            <select s="select" id="addIgnoreSelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">是否后台忽略：</label>
+        <div class="col-sm-10">
+            <select name="ignore" class="form-control">
+                <option value="false">显示</option>
+                <option value="true">忽略</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" s-valid-role="item">
+        <label class="col-sm-2 control-label">加密字段：</label>
+        <div class="col-sm-10">
+            <input id="hidden_encrypt" type="hidden" name="encrypt">
+            <select s="select" id="encryptSelect" class="selectpicker" title="选择字段" multiple
+                    style="display: inline-block; width: 150px;"
+                    s-build="tableData.children"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+
+
+</form>
+<script type="text/javascript">
+
+    S.on("s-ready", function () {
+        setSelectValue(S.N("#hidden_searchKey"), S.N("#searchKeySelect option"));
+        setSelectValue(S.N("#hidden_hidden"), S.N("#hiddenSelect option"));
+        setSelectValue(S.N("#hidden_limit"), S.N("#limitSelect option"));
+        setSelectValue(S.N("#hidden_addIgnore"), S.N("#addIgnoreSelect option"));
+        setSelectValue(S.N("#hidden_action"), S.N("#actionSelect option"));
+        setSelectValue(S.N("#hidden_encrypt"), S.N("#encryptSelect option"));
+        $('.selectpicker').chosen();
+    });
+
+    S.meta.btns = [
+        {
+            name: "保存",
+            style: "btn btn-primary",
+            click: function () {
+                getSelectValue(S.N("#hidden_searchKey"), S.N("#searchKeySelect"));
+                getSelectValue(S.N("#hidden_hidden"), S.N("#hiddenSelect"));
+                getSelectValue(S.N("#hidden_limit"), S.N("#limitSelect"));
+                getSelectValue(S.N("#hidden_addIgnore"), S.N("#addIgnoreSelect"));
+                getSelectValue(S.N("#hidden_action"), S.N("#actionSelect"));
+                getSelectValue(S.N("#hidden_encrypt"), S.N("#encryptSelect"));
+                return S.S("#tableForm").submit().done(function (rs) {
+                    S.close(rs);
+                    S.notice(rs.msg, "success");
+                });
+            }
+        },
+        {
+            name: "关闭",
+            style: "btn btn-default",
+            click: function () {
+                S.close();
+            }
+        }
+    ];
+
+    function validNotice(node, msg, level) {
+        if (level == 'error') {
+            S.notice(msg, 'danger');
+        }
+    }
+
+    function initMutileValue() {
+        var tableInfo = tableData;
+
+        $('[multiple]').each(function (index, item) {
+            var name = $(item).attr("name");
+            var value = tableInfo[name];
+            if (value.size > 0) {
+                //找子对象复制
+                for (var v in value) {
+                    $(item).data(v);
+                }
+//                $("#"+name +" option").each(function(indexNext,itemNext){
+//                    if($(itemNext))
+                //               })
+            }
+        });
+    }
+
+    function getMutileValue() {
+        $('[multiple]').each(function (index, item) {
+            var name = $(item).attr("name");
+            var value = tableData[name];
+            if (value.size > 0) {
+                //找子对象复制
+                for (var v in value) {
+                    $(item).data(v);
+                }
+//                $("#"+name +" option").each(function(indexNext,itemNext){
+//                    if($(itemNext))
+                //               })
+            }
+        });
+    }
+
+    function returnInt(element) {
+        return parseInt(element, 10);
+    }
+</script>
