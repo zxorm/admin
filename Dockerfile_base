@@ -1,4 +1,4 @@
 FROM mio101/py3-mysqlclient-alpine
 RUN   apk add python3-dev build-base --no-cache && \
-  pip3 install PyCrypto Flask SQLAlchemy tablestore && \
+  pip3 install PyCrypto Flask SQLAlchemy && \
   apk del  build-base python3-dev && apk add python3 --no-cache
