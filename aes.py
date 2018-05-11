@@ -1,7 +1,8 @@
+from setting import aesKey
 from Crypto.Cipher import AES
 def _pad(s): return s + (AES.block_size - len(s) % AES.block_size) * chr(AES.block_size - len(s) % AES.block_size)
 def _cipher():
-    keyHex = '12a170f8b5e63fa59f7e7cc6e7fca54e'
+    keyHex = aesKey
     key=bytes.fromhex(keyHex)
     return AES.new(key=key, mode=AES.MODE_ECB)
 def encrypt_token(data):

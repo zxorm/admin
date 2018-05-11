@@ -5,3 +5,5 @@ dbName=os.getenv("DB_NAME", "")
 dbUrl=os.getenv("DB_URL", f"mysql:///{dbName}?charset=utf8")
 
 secretKey=os.getenv("APP_SECRET", "")
+
+aesKey=os.getenv("AES_SECRET", "")
