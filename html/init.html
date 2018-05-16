@@ -13,7 +13,7 @@
                 success: function (rs) {
                     rs = JSON.parse(rs);
                     if (rs.code == 200) {
-                        location.reload();
+                        location.href="/";
                     } else {
                         alert(rs.msg);
                     }
