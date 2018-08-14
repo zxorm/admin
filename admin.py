@@ -717,7 +717,7 @@ def getTables(table):
             if isinstance(d[k],datetime):
                 d[k] = d[k].strftime('%Y-%m-%d %H:%M:%S')
         datas.append(d)
-    return json.dumps({"code": 200, "msg": "操作成功", "list": datas, "pageInfo": {"page": page, "total": total,"pageSize":pageSize}})
+    return json.dumps({"code": 200, "msg": "操作成功", "list": datas, "pageInfo": {"page": page, "total": total,"pageSize":pageSize}},default=str)
 
 
 
